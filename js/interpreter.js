@@ -15,7 +15,7 @@ var Interpreter = function (source, tape, pointer,
    *    pointer.get("index") // 1
    *
    * */
-  var tokens = "<>+-.,[]!";
+  var tokens = "<>+-.,[]!?";
   var jumps = [], action = 0;
 
   //for ! operator
@@ -171,6 +171,9 @@ var Interpreter = function (source, tape, pointer,
         break; 
       case "!":
         tokens = "";
+        break;
+      case "?":
+        cell.set("value", Math.ceil(Math.random() * 256 - 1))
         break;
     }
     return action++;
